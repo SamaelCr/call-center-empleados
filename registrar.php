@@ -10,7 +10,7 @@ if (isset($_POST['register'])) {
         strlen($_POST['telefono']) >= 1 &&
         strlen($_POST['estado_laboral']) >= 1 &&
         strlen($_POST['fecha_ing']) >= 1 && 
-        strlen($_POST['fecha_eg']) >= 1 &&
+     //    strlen($_POST['fecha_eg']) >= 1 &&
         strlen($_POST['departamento']) >= 1 &&
         strlen($_POST['direccion']) >= 1) {
         $nombre = trim($_POST['nombre']);
@@ -20,12 +20,12 @@ if (isset($_POST['register'])) {
         $telefono = trim($_POST['telefono']);
         $estado_laboral = trim($_POST['estado_laboral']);
         $fecha_ing = trim($_POST['fecha_ing']);
-        $fecha_eg = trim($_POST['fecha_eg']);
+     //    $fecha_eg = trim($_POST['fecha_eg']);
         $departamento = trim($_POST['departamento']);
         $direccion = trim($_POST['direccion']);
 
      //    $consulta = "INSERT INTO datos(nombre, email, fecha_reg) VALUES ('$name', '$email', '$fechareg')";
-        $consulta  = "INSERT INTO datos(nombre, apellido, cedula, cargo, telefono, estado_laboral, fecha_ing, fecha_eg, departamento, direccion) VALUES ('$nombre', '$apellido', '$cedula', '$cargo', '$telefono', '$estado_laboral', '$fecha_ing', '$fecha_eg', '$departamento', '$direccion')";
+        $consulta  = "INSERT INTO datos(nombre, apellido, cedula, cargo, telefono, estado_laboral, fecha_ing, departamento, direccion) VALUES ('$nombre', '$apellido', '$cedula', '$cargo', '$telefono', '$estado_laboral', '$fecha_ing', '$departamento', '$direccion')";
 
         $resultado = mysqli_query($conex,$consulta);
         if ($resultado) {

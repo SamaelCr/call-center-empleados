@@ -65,3 +65,21 @@ $(document).ready(function(){
         });
     });
 })(jQuery);
+
+document.addEventListener("DOMContentLoaded", function() {
+	document.getElementById("form").addEventListener('submit', validarFormulario); 
+});
+function validarFormulario(evento) {
+	evento.preventDefault();
+	var nombre = document.getElementById('nombre').value;
+	if(nombre.length == 0) {
+	  alert('No ha escrito nada en el nombre');
+	  return;
+	}
+	var apellido = document.getElementById('apellido').value;
+	if (clave.length == 0) {
+	  alert('No ha escrito nada en el apellido');
+	  return;
+	}
+	this.submit();
+}

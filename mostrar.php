@@ -15,6 +15,17 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
+        <?php
+            include("con_db.php");
+
+            $id=$_GET['id'];
+
+            $consulta = "SELECT * FROM datos WHERE id ='$id'";
+            $resultado = mysqli_query($conex,$consulta);
+
+            $row = $resultado->fetch_array();
+
+        ?>
     	<!-- Main container -->
 	<main class="full-box main-container">
 		<!-- Nav lateral -->
@@ -120,7 +131,7 @@
 						<a href="agregar.php"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR EMPLEADO</a>
 					</li>
 					<li>
-						<a class="active" href="list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE EMPLEADOS</a>
+						<a href="list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE EMPLEADOS</a>
 					</li>
 					<!-- <li>
 						<a href="client-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR EMPLEADO</a>
@@ -129,89 +140,28 @@
 			</div>
 			
 			<!-- Content here-->
-			<div class="container-fluid">
-				<div class="table-responsive">
-                    <table class="table table-dark table-sm">
-                        <thead>
-                            <tr class="text-center roboto-medium">
-                                <th>#</th>
-                                <th>NOMBRE</th>
-                                <th>APELLIDO</th>
-                                <th>CEDULA</th>
-                                <th>CARGO</th>
-								<th>TELEFONO</th>
-								<th>ESTADO LABORAL</th>
-								<th>FECHA DE INGRESO</th>
-								<th>FECHA DE EGRESO</th>
-								<th>DEPARTAMENTO</th>
-								<th>DIRECCION</th>
-                                <th>ACTUALIZAR</th>
-								<th>MOSTRAR</th>
-                            </tr>
-                        </thead>
-                        <?php
-                        $inc = include("con_db.php");
-                        if ($inc) {
-                            $consulta = "SELECT * FROM datos";
-                            $resultado = mysqli_query($conex,$consulta);
-                            if ($resultado) {
-                                while($row = $resultado->fetch_array()){
-                                    $id = $row['id'];
-                                    $nombre = $row['nombre'];
-                                    $apellido = $row['apellido'];
-                                    $cedula = $row['cedula'];
-                                    $cargo = $row['cargo'];
-                                    $telefono = $row['telefono'];
-                                    $estado_laboral = $row['estado_laboral'];
-                                    $fecha_ing = $row['fecha_ing'];
-                                    $fecha_eg = $row['fecha_eg'];
-                                    $departamento = $row['departamento'];
-                                    $direccion = $row['direccion']
-                                    ?>
-                                    <tbody>
-                                        <tr class="text-center" >
-                                            <td><?php echo $id; ?></td>
-                                            <td><?php echo $nombre; ?></td>
-                                            <td><?php echo $apellido; ?></td>
-                                            <td><?php echo $cedula; ?></td>
-                                            <td><?php echo $cargo; ?></td>
-                                            <td><?php echo $telefono; ?></td>
-											<td><?php echo $estado_laboral; ?></td>
-											<td><?php echo $fecha_ing; ?></td>
-											<td><?php echo $fecha_eg; ?></td>
-											<td><?php echo $departamento; ?></td>
-											<td><?php echo $direccion; ?></td>
-                                            
-                                            <td><a href="actualizar.php?id=<?php echo $row['id'] ?>"class="btn btn-info">Editar</a></td>
-                                            <!-- <td><a href="delete.php?id=<?php echo $row['id'] ?>"class="btn btn-danger">eliminar</a></td> -->
-											<td><a href="mostrar.php?id=<?php echo $row['id'] ?>"class="btn btn-success">Mostrar</a></td>
-                                        </tr>
+			<div class="container mt-5">
+                <form action="update.php" method="POST">
 
-                                    <?php
-                                }
-                            }
-                        }
-                    ?>
-                
-                    </table>
-				</div>
-                <?php 
-                    include("registrar.php");
-                ?>
-				<nav aria-label="Page navigation example">
-					<ul class="pagination justify-content-center">
-						<li class="page-item disabled">
-							<a class="page-link" href="#" tabindex="-1">Previous</a>
-						</li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item">
-							<a class="page-link" href="#">Next</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
+                    <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
+                        <label for="" class="bmd-label-floating">Nombre</label>
+                        <input type="text" class="form-control mb-3" placeholder="Nombre" name="nombre" value="<?php echo $row['nombre'] ?>" readonly>
+                        <label for="" class="bmd-label-floating">Apellido</label>
+                        <input type="text" class="form-control mb-3" placeholder="Apellido" name="apellido" value="<?php echo $row['apellido'] ?>" readonly>
+                        <label for="" class="bmd-label-floating">Cargo</label>
+                        <input type="text" class="form-control mb-3" placeholder="Cargo" name="cargo" value="<?php echo $row['cargo'] ?>" readonly>
+                        <label for="" class="bmd-label-floating">Estado Laboral</label>
+                        <input type="text" class="form-control mb-3" placeholder="Estado Laboral" name="estado_laboral" value="<?php echo $row['estado_laboral'] ?>" readonly>
+                        <label for="" class="bmd-label-floating">Departamento</label>
+                        <input type="text" class="form-control mb-3" placeholder="Departamento" name="departamento" value="<?php echo $row['departamento'] ?>" readonly>
+                        <label for="" class="bmd-label-floating">Direccion</label>
+                        <input type="text" class="form-control mb-3" placeholder="Direccion" name="direccion" value="<?php echo $row['direccion'] ?>" readonly>
+                        <label for="" class="bmd-label-floating">Fecha de egreso</label>
+                        <input type="date" class="form-control mb-3" placeholder="Fecha de Egresado" name="fecha_eg" value="<?php echo $row['fecha_eg'] ?>" readonly>
+                    
+                    <!-- <input type="buttom" value="volver" class="form-control mb-3"> -->
+                </form>
+            </div> 
 
 		</section>
 	</main>
@@ -239,3 +189,6 @@
 	<script src="./js/main.js" ></script>
 </body>
 </html>
+
+
+

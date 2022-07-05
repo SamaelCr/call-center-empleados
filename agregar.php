@@ -25,28 +25,29 @@
 					<i class="far fa-times-circle show-nav-lateral"></i>
 					<img src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar">
 					<figcaption class="roboto-medium text-center">
-						Carlos Alfaro <br><small class="roboto-condensed-light">Web Developer</small>
+						Administrador <br>
+						<!-- <small class="roboto-condensed-light">Web Developer</small> -->
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
 				<nav class="full-box nav-lateral-menu">
 					<ul>
-						<li>
+						<!-- <li>
 							<a href="home.html"><i class="fab fa-dashcube fa-fw"></i> &nbsp; Dashboard</a>
-						</li>
+						</li> -->
 
 						<li>
 							<a href="#" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i> &nbsp; Empleados <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
-									<a href="client-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Empleados</a>
+									<a href="agregar.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Empleados</a>
 								</li>
 								<li>
-									<a href="client-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de empleados</a>
+									<a href="list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de empleados</a>
 								</li>
-								<li>
+								<!-- <li>
 									<a href="client-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Empleados</a>
-								</li>
+								</li> -->
 							</ul>
 						</li>
 
@@ -125,9 +126,9 @@
 				<h3 class="text-left">
 					<i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR EMPLEADO
 				</h3>
-				<p class="text-justify">
+				<!-- <p class="text-justify">
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem odit amet asperiores quis minus, dolorem repellendus optio doloremque error a omnis soluta quae magnam dignissimos, ipsam, temporibus sequi, commodi accusantium!
-				</p>
+				</p> -->
 			</div>
 
 			<div class="container-fluid">
@@ -138,9 +139,9 @@
 					<li>
 						<a href="list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE EMPLEADOS</a>
 					</li>
-					<li>
+					<!-- <li>
 						<a href="client-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR EMPLEADOS</a>
-					</li>
+					</li> -->
 				</ul>	
 			</div>
 			
@@ -168,7 +169,8 @@
 											<label for="cliente_nombre" class="">Cargo</label>
 											<select class="custom-select" name="cargo">
 												<option value=""></option>
-												<option value="cargo1">desempleado</option>
+												<option value="atencion al cliente">atencion al cliente</option>
+												<option value="Gerente">Gerente</option>
 											</select>
 
 										</div>
@@ -176,43 +178,44 @@
 								<div class="col-12 col-md-4">
 									<div class="form-group">
 										<label for="cliente_nombre" class="bmd-label-floating">Cedula </label>
-										<input type="text" class="form-control" name="cedula">
+										<input type="number" class="form-control" name="cedula">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
 										<label for="cliente_apellido" class="bmd-label-floating">Teléfono</label>
-										<input type="text" class="form-control" name="telefono">
+										<input type="number" class="form-control" name="telefono">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
 										<label for="cliente_nombre" class="">Estado laboral</label>
 										<select class="custom-select" name="estado_laboral">
-											<option value=""></option>
-											<option value="estado1">estado</option>
+											<option value="Empleado">Empleado</option>
 										</select>
 
 									</div>
 								</div>
-								<div class="col-12 col-md-4">
+								<div class="col-12 col-md-8">
 									<div class="form-group">
 										<label for="cliente_telefono" class="bmd-label-floating">Fecha de ingreso</label>
-										<input type="Number" class="form-control" name="fecha_ing">
+										<input class="form-control" type="datetime-local" name="fecha_ing" value="<?php echo date('Y-m-d\TH:i:s'); ?>" id="fecha_ing" required readonly>
 									</div>
 								</div>
-								<div class="col-12 col-md-4">
+								<!-- <div class="col-12 col-md-4">
 									<div class="form-group">
 										<label for="cliente_direccion" class="bmd-label-floating">Fecha de egreso</label>
-										<input type="text" class="form-control" name="fecha_eg">
+										<input type="date" class="form-control" name="fecha_eg">
 									</div>
-								</div>
+								</div> -->
 								<div class="col-12 col-md-4">
 										<div class="form-group">
 											<label for="cliente_nombre" class="">Departamento</label>
 											<select class="custom-select" name="departamento">
 												<option value=""></option>
-												<option value="depa1">departamento1</option>
+												<option value="departamento-1">departamento-1</option>
+												<option value="departamento-2">departamento-2</option>
+												
 										</select>
 									</div>
 								</div>
@@ -263,21 +266,5 @@
 
 	<script src="./js/main.js" ></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
 </body>
 </html>
